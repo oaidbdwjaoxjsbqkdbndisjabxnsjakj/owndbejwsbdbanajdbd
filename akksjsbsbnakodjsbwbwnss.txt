@@ -492,7 +492,6 @@ function redzlib:MakeWindow(Configs)
             for t = 0, math.pi * 2, 0.1 do
                 local intensity = (math.sin(t) + 1) / 2
                 local transparency = 1 - (intensity * 0.15)
-                LeftImage.ImageTransparency = transparency
                 RightImage.ImageTransparency = transparency
                 task.wait(0.03)
             end
@@ -511,7 +510,6 @@ function redzlib:MakeWindow(Configs)
         end)
     end
     
-    SetupHoverEffect(LeftImage)
     SetupHoverEffect(RightImage)
     
     -- ============================================
