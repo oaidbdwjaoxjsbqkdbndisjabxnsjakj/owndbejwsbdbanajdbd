@@ -12,9 +12,9 @@ local redzlib = {
     Themes = {
         Cyberpunk = {
             ["Color Hub 1"] = ColorSequence.new({
-                ColorSequenceKeypoint.new(0.00, Color3.fromRGB(10, 0, 20)),
+                ColorSequenceKeypoint.new(0.00, Color3.fromRGB(180, 0, 255)),
                 ColorSequenceKeypoint.new(0.50, Color3.fromRGB(25, 0, 40)),
-                ColorSequenceKeypoint.new(1.00, Color3.fromRGB(10, 0, 20))
+                ColorSequenceKeypoint.new(1.00, Color3.fromRGB(180, 0, 255))
             }),
             ["Color Hub 2"] = Color3.fromRGB(8, 0, 15),
             ["Color Stroke"] = Color3.fromRGB(120, 0, 200),
@@ -40,9 +40,9 @@ local redzlib = {
         },
         DarkPurple = {
             ["Color Hub 1"] = ColorSequence.new({
-                ColorSequenceKeypoint.new(0.00, Color3.fromRGB(20, 0, 30)),
-                ColorSequenceKeypoint.new(0.50, Color3.fromRGB(35, 0, 55)),
-                ColorSequenceKeypoint.new(1.00, Color3.fromRGB(20, 0, 30))
+                ColorSequenceKeypoint.new(0.00, Color3.fromRGB(180, 0, 255)),
+                ColorSequenceKeypoint.new(0.50, Color3.fromRGB(180, 0, 255)),
+                ColorSequenceKeypoint.new(1.00, Color3.fromRGB(180, 0, 255))
             }),
             ["Color Hub 2"] = Color3.fromRGB(15, 0, 25),
             ["Color Stroke"] = Color3.fromRGB(130, 0, 210),
