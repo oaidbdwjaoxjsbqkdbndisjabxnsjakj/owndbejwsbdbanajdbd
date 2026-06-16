@@ -12,9 +12,9 @@ local redzlib = {
     Themes = {
         Cyberpunk = {
             ["Color Hub 1"] = ColorSequence.new({
-                ColorSequenceKeypoint.new(0.00, Color3.fromRGB(180, 0, 255)),
+                ColorSequenceKeypoint.new(0.00, Color3.fromRGB(10, 0, 20)),
                 ColorSequenceKeypoint.new(0.50, Color3.fromRGB(25, 0, 40)),
-                ColorSequenceKeypoint.new(1.00, Color3.fromRGB(180, 0, 255))
+                ColorSequenceKeypoint.new(1.00, Color3.fromRGB(10, 0, 20))
             }),
             ["Color Hub 2"] = Color3.fromRGB(8, 0, 15),
             ["Color Stroke"] = Color3.fromRGB(120, 0, 200),
@@ -26,9 +26,9 @@ local redzlib = {
         },
         Gothic = {
             ["Color Hub 1"] = ColorSequence.new({
-                ColorSequenceKeypoint.new(0.00, Color3.fromRGB(180, 0, 255)),
-                ColorSequenceKeypoint.new(0.50, Color3.fromRGB(180, 0, 255)),
-                ColorSequenceKeypoint.new(1.00, Color3.fromRGB(180, 0, 255))
+                ColorSequenceKeypoint.new(0.00, Color3.fromRGB(15, 0, 25)),
+                ColorSequenceKeypoint.new(0.50, Color3.fromRGB(30, 0, 50)),
+                ColorSequenceKeypoint.new(1.00, Color3.fromRGB(15, 0, 25))
             }),
             ["Color Hub 2"] = Color3.fromRGB(10, 0, 18),
             ["Color Stroke"] = Color3.fromRGB(100, 0, 180),
@@ -40,9 +40,9 @@ local redzlib = {
         },
         DarkPurple = {
             ["Color Hub 1"] = ColorSequence.new({
-                ColorSequenceKeypoint.new(0.00, Color3.fromRGB(180, 0, 255)),
+                ColorSequenceKeypoint.new(0.00, Color3.fromRGB(20, 0, 30)),
                 ColorSequenceKeypoint.new(0.50, Color3.fromRGB(35, 0, 55)),
-                ColorSequenceKeypoint.new(1.00, Color3.fromRGB(180, 0, 255))
+                ColorSequenceKeypoint.new(1.00, Color3.fromRGB(20, 0, 30))
             }),
             ["Color Hub 2"] = Color3.fromRGB(15, 0, 25),
             ["Color Stroke"] = Color3.fromRGB(130, 0, 210),
@@ -474,10 +474,23 @@ function redzlib:MakeWindow(Configs)
     -- ============================================
     
     local ImageID = "rbxassetid://81034145657954"
+    
+    -- Imagem Esquerda (canto superior esquerdo)
+    local LeftImage = Create("ImageLabel", MainFrame, {
+        Name = "LeftCharacterImage",
+        Size = UDim2.new(0, 55, 0, 55),
+        Position = UDim2.new(0, 5, 0, 5),
+        BackgroundTransparency = 1,
+        Image = ImageID,
+        ScaleType = Enum.ScaleType.Fit,
+        ZIndex = 10
+    })
+    Make("Corner", LeftImage, UDim.new(0, 12))
+    
     -- Imagem Direita (canto superior direito)
     local RightImage = Create("ImageLabel", MainFrame, {
         Name = "RightCharacterImage",
-        Size = UDim2.new(0, 55, 0, 55),
+        Size = UDim2.new(0, 00, 0, 00),
         Position = UDim2.new(1, -60, 0, 5),
         BackgroundTransparency = 1,
         Image = ImageID,
@@ -487,19 +500,18 @@ function redzlib:MakeWindow(Configs)
     Make("Corner", RightImage, UDim.new(0, 12))
     
     -- Animação suave sincronizada (brilho/transparência)
-task.spawn(function()
-    while MainFrame and MainFrame.Parent do
-        for t = 0, math.pi * 2, 0.1 do
-            local intensity = (math.sin(t) + 1) / 2
-            local transparency = 1 - (intensity * 0.15)
-            RightImage.ImageTransparency = transparency
-            task.wait(0.03)
+    task.spawn(function()
+        while MainFrame and MainFrame.Parent do
+            for t = 0, math.pi * 2, 0.1 do
+                local intensity = (math.sin(t) + 1) / 2
+                local transparency = 1 - (intensity * 0.15)
+                LeftImage.ImageTransparency = transparency
+                RightImage.ImageTransparency = transparency
+                task.wait(0.03)
+            end
+            task.wait(0.5)
         end
-        task.wait(0.5)
-    end
-end)
-
-SetupHoverEffect(RightImage)
+    end)
     
     -- Efeito hover nas imagens
     local function SetupHoverEffect(Image)
@@ -512,6 +524,7 @@ SetupHoverEffect(RightImage)
         end)
     end
     
+    SetupHoverEffect(LeftImage)
     SetupHoverEffect(RightImage)
     
     -- ============================================
@@ -523,7 +536,7 @@ SetupHoverEffect(RightImage)
     
     local Title = InsertTheme(Create("TextLabel", TopBar, {
         Position = UDim2.new(0, 15, 0.5), AnchorPoint = Vector2.new(0, 0.5), AutomaticSize = "XY",
-        Text = WTitle, TextXAlignment = "Left", TextSize = 18, TextColor3 = Theme["Color Text"],
+        Text = WTitle, TextXAlignment = "Left", TextSize = 17, TextColor3 = Theme["Color Text"],
         BackgroundTransparency = 1, Font = Enum.Font.Arcade, RichText = true, Name = "Title"
     }, {
         InsertTheme(Create("TextLabel", {
