@@ -487,17 +487,19 @@ function redzlib:MakeWindow(Configs)
     Make("Corner", RightImage, UDim.new(0, 12))
     
     -- Animação suave sincronizada (brilho/transparência)
-    task.spawn(function()
-        while MainFrame and MainFrame.Parent do
-            for t = 0, math.pi * 2, 0.1 do
-                local intensity = (math.sin(t) + 1) / 2
-                local transparency = 1 - (intensity * 0.15)
-                RightImage.ImageTransparency = transparency
-                task.wait(0.03)
-            end
-            task.wait(0.5)
+task.spawn(function()
+    while MainFrame and MainFrame.Parent do
+        for t = 0, math.pi * 2, 0.1 do
+            local intensity = (math.sin(t) + 1) / 2
+            local transparency = 1 - (intensity * 0.15)
+            RightImage.ImageTransparency = transparency
+            task.wait(0.03)
         end
-    end)
+        task.wait(0.5)
+    end
+end)
+
+SetupHoverEffect(RightImage)
     
     -- Efeito hover nas imagens
     local function SetupHoverEffect(Image)
