@@ -524,7 +524,7 @@ function redzlib:MakeWindow(Configs)
     
     local Title = InsertTheme(Create("TextLabel", TopBar, {
         Position = UDim2.new(0, 15, 0.5), AnchorPoint = Vector2.new(0, 0.5), AutomaticSize = "XY",
-        Text = WTitle, TextXAlignment = "Left", TextSize = 20, TextColor3 = Theme["Color Text"],
+        Text = WTitle, TextXAlignment = "Left", TextSize = 17, TextColor3 = Theme["Color Text"],
         BackgroundTransparency = 1, Font = Enum.Font.Arcade, RichText = true, Name = "Title"
     }, {
         InsertTheme(Create("TextLabel", {
@@ -880,42 +880,10 @@ function redzlib:MakeWindow(Configs)
             Make("Stroke", Toggle, {Color = Theme["Color Theme"]})
             Make("Corner", Toggle, UDim.new(0.5, 0))
             
-            local Blur = Create("Frame", ToggleHolder, {
-    Size = UDim2.new(0, 10, 1, 0),
-    Position = UDim2.new(-0.3, 0, 0, 0),
-    BackgroundColor3 = Color3.new(1,1,1),
-    BackgroundTransparency = 0.8,
-    ZIndex = 5
-})
-
-Make("Corner", Blur, UDim.new(0.5, 0))
-
-local BlurGradient = Create("UIGradient", Blur, {
-    Transparency = NumberSequence.new({
-        NumberSequenceKeypoint.new(0, 1),
-        NumberSequenceKeypoint.new(0.5, 0.4),
-        NumberSequenceKeypoint.new(1, 1)
-    }),
-    Rotation = 0
-})
-            
             local WaitClick
             local function SetToggle(Val)
                 if WaitClick then return end
                 WaitClick, Default = true, Val
-                Blur.Position = UDim2.new(-0.3, 0, 0, 0)
-                
-                TweenService:Create(
-    Blur,
-    TweenInfo.new(0.3, Enum.EasingStyle.Quint, Enum.EasingDirection.Out),
-    {Position = UDim2.new(1.3, 0, 0, 0)}
-):Play()
-
-TweenService:Create(
-    Blur,
-    TweenInfo.new(0.3, Enum.EasingStyle.Quint),
-    {Position = UDim2.new(1.3, 0, 0, 0)}
-):Play()
                 SetFlag(Flag, Default)
                 Funcs:FireCallback(Callback, Default)
                 if Default then
@@ -976,15 +944,6 @@ TweenService:Create(
             local DropFrame = Create("Frame", NoClickFrame, {
                 Size = UDim2.new(SelectedFrame.Size.X, 0, 0), BackgroundTransparency = 0.25, BackgroundColor3 = Color3.fromRGB(0, 0, 0),
                 AnchorPoint = Vector2.new(0, 1), Name = "DropdownFrame", ClipsDescendants = true, Active = true
-                
-                local ToggleHolder = InsertTheme(Create("Frame", Button, {
-    Size = UDim2.new(0, 35, 0, 18),
-    Position = UDim2.new(1, -10, 0.5),
-    AnchorPoint = Vector2.new(1, 0.5),
-    BackgroundColor3 = Theme["Color Element"],
-    BackgroundTransparency = 0.25,
-    ClipsDescendants = true
-}), "Frame")
             })
             Make("Stroke", DropFrame, {Color = Theme["Color Stroke"]})
             Make("Corner", DropFrame, UDim.new(0, 12))
