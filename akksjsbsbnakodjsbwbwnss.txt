@@ -474,19 +474,6 @@ function redzlib:MakeWindow(Configs)
     -- ============================================
     
     local ImageID = "rbxassetid://81034145657954"
-    
-    -- Imagem Esquerda (canto superior esquerdo)
-    local LeftImage = Create("ImageLabel", MainFrame, {
-        Name = "LeftCharacterImage",
-        Size = UDim2.new(0, 55, 0, 55),
-        Position = UDim2.new(0, 5, 0, 5),
-        BackgroundTransparency = 1,
-        Image = ImageID,
-        ScaleType = Enum.ScaleType.Fit,
-        ZIndex = 10
-    })
-    Make("Corner", LeftImage, UDim.new(0, 12))
-    
     -- Imagem Direita (canto superior direito)
     local RightImage = Create("ImageLabel", MainFrame, {
         Name = "RightCharacterImage",
