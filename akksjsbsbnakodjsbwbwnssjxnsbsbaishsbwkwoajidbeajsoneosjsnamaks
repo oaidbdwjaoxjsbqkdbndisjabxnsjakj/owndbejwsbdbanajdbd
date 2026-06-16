@@ -504,7 +504,7 @@ function redzlib:MakeWindow(Configs)
         while MainFrame and MainFrame.Parent do
             for t = 0, math.pi * 2, 0.1 do
                 local intensity = (math.sin(t) + 1) / 2
-                local transparency = 1 - (intensity * 0.15)
+                local transparency = 1 - (intensity * 0.6)
                 LeftImage.ImageTransparency = transparency
                 RightImage.ImageTransparency = transparency
                 task.wait(0.03)
@@ -536,8 +536,8 @@ function redzlib:MakeWindow(Configs)
     
     local Title = InsertTheme(Create("TextLabel", TopBar, {
         Position = UDim2.new(0, 15, 0.5), AnchorPoint = Vector2.new(0, 0.5), AutomaticSize = "XY",
-        Text = WTitle, TextXAlignment = "Left", TextSize = 12, TextColor3 = Theme["Color Text"],
-        BackgroundTransparency = 1, Font = Enum.Font.Gotham, RichText = true, Name = "Title"
+        Text = WTitle, TextXAlignment = "Left", TextSize = 17, TextColor3 = Theme["Color Text"],
+        BackgroundTransparency = 1, Font = Enum.Font.Arcade, RichText = true, Name = "Title"
     }, {
         InsertTheme(Create("TextLabel", {
             Size = UDim2.fromScale(0, 1), AutomaticSize = "X", AnchorPoint = Vector2.new(0, 1),
